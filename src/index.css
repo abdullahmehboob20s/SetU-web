@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "lunchBox";
+  src: url(./assets/font/Lunchbox-Bold/Lunchbox_Bold.otf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: "lunchBox";
+  src: url(./assets/font/Lunchbox-Regular/Lunchbox.otf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "north-font";
+  src: url(./assets/font/rainier-north-700.ttf);
+  font-weight: 700;
+}
+
+@layer components {
+  * {
+    @apply font-lunchBox;
+  }
+  .container {
+    @apply max-w-[1700px] mx-auto w-[90%];
+  }
+
+  .font-north {
+    font-family: "north-font";
+  }
+}

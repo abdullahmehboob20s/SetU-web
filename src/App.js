@@ -1,7 +1,9 @@
+import Hero from "layouts/Hero";
+
 function App() {
   return (
     <div>
-      <h1>sakdjsalkdj</h1>
+      <Hero />
     </div>
   );
 }
