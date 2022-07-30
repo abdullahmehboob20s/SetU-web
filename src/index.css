@@ -4,13 +4,15 @@
 
 @font-face {
   font-family: "lunchBox";
-  src: url(./assets/font/Lunchbox-Bold/Lunchbox_Bold.otf);
+  src: url(./assets/font/Lunchbox-Bold/Lunchbox_Bold.ttf);
   font-weight: 700;
+  ascent-override: 100%;
 }
 @font-face {
   font-family: "lunchBox";
   src: url(./assets/font/Lunchbox-Regular/Lunchbox.otf);
   font-weight: 400;
+  ascent-override: 100%;
 }
 @font-face {
   font-family: "north-font";
@@ -27,6 +29,36 @@
   }
 
   .font-north {
-    font-family: "north-font";
+    @apply font-north-font;
   }
+
+  .pink-border-text {
+    -webkit-text-stroke: 1px #e343a5;
+  }
+
+  .blue-border-text {
+    -webkit-text-stroke: 1px #0388d4;
+  }
+}
+
+.brand-swiper .swiper-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.hide-select-dropdown-icon {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.product-selection-swiper {
+  height: 100%;
+}
+
+.product-selection-swiper .swiper-wrapper {
+  min-height: 100%;
+}
+
+.product-selection-swiper .swiper-slide {
+  height: auto;
 }
