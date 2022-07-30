@@ -12,15 +12,17 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
+import useMediaQuery from "hooks/useMediaQuery";
 
 function Slider() {
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
+  const isAbove640px = useMediaQuery("(min-width : 640px)");
 
   return (
-    <div className="px-[3rem] relative">
+    <div className="px-[3rem] relative sm:w-[80%] sm:mx-auto lg:w-[60%]">
       <Swiper
-        slidesPerView={2}
+        slidesPerView={isAbove640px ? 4 : 2}
         spaceBetween={0}
         slidesPerGroup={2}
         loop={true}
@@ -62,15 +64,15 @@ function Slider() {
 
       <button
         ref={navigationPrevRef}
-        className="absolute top-[50%] left-[1.4rem] z-[2] cursor-pointer translate-y-[-50%]"
+        className="absolute top-[50%] left-[1.4rem] z-[2] cursor-pointer translate-y-[-50%] "
       >
-        <img src={arrowLeft} alt="" className="w-[1rem]" />
+        <img src={arrowLeft} alt="" className="w-[1rem] sm:w-[1.2rem]" />
       </button>
       <button
         ref={navigationNextRef}
-        className="absolute top-[50%] right-[1.4rem] z-[2] cursor-pointer translate-y-[-50%]"
+        className="absolute top-[50%] right-[1.4rem] z-[2] cursor-pointer translate-y-[-50%] "
       >
-        <img src={arrowRight} alt="" className="w-[1rem]" />
+        <img src={arrowRight} alt="" className="w-[1rem] sm:w-[1.2rem]" />
       </button>
     </div>
   );

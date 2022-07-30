@@ -13,10 +13,10 @@ function App() {
       <div className="mb-[100px]">
         <Slider />
       </div>
-      <div className="mb-[100px]">
+      <div className="mb-[100px]" id="explaination">
         <About />
       </div>
-      <div className="mb-[100px]">
+      <div className="mb-[100px] xl:mb-[200px]">
         <Explain />
       </div>
       <div className="mb-[100px]">

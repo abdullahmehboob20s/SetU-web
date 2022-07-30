@@ -20,7 +20,12 @@ import socks3 from "assets/images/socks-3.png";
 function LetsStartChoosing() {
   return (
     <div>
-      <img src={letsStartChoosingTitle} className="w-full mb-6" alt="" />
+      <img
+        src={letsStartChoosingTitle}
+        className="w-full mb-6 md:w-[60%] md:mx-auto lg:w-[28rem]"
+        alt=""
+      />
+
       <div className="container space-y-10">
         <ProductCard
           productName="BUTTONED SHIRT"
@@ -154,7 +159,10 @@ function LetsStartChoosing() {
           ]}
         />
 
-        <div className="flex flex-col items-center mt-[2rem] space-y-2">
+        <div
+          className="flex flex-col items-center mt-[2rem] space-y-2"
+          id="buy"
+        >
           <button className="text-[2rem] font-bold text-white bg-green py-[.2rem] px-[2.2rem] rounded-[.6rem] ">
             CLICK TO PAY
           </button>

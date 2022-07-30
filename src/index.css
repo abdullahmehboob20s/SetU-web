@@ -20,10 +20,17 @@
   font-weight: 700;
 }
 
-@layer components {
+@layer base {
   * {
     @apply font-lunchBox;
+    scroll-behavior: smooth;
   }
+  body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+}
+@layer components {
   .container {
     @apply max-w-[1700px] mx-auto w-[90%];
   }
