@@ -7,11 +7,8 @@ import Slider from "layouts/Slider";
 function App() {
   return (
     <div>
-      <div className="mb-[1rem]">
-        <Hero />
-      </div>
       <div className="mb-[100px]">
-        <Slider />
+        <Hero />
       </div>
       <div className="mb-[100px]" id="explaination">
         <About />

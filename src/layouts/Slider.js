@@ -49,16 +49,16 @@ function Slider() {
         }}
       >
         <SwiperSlide className="flex items-center justify-center">
-          <img src={sliderImg1} className="w-[80%]" alt="" />
+          <img src={sliderImg1} className="w-[80%] xl:w-[58%]" alt="" />
         </SwiperSlide>
         <SwiperSlide className="flex items-center justify-center">
-          <img src={sliderImg4} className="w-[50%]" alt="" />
+          <img src={sliderImg4} className="w-[50%] xl:w-[36%]" alt="" />
         </SwiperSlide>
         <SwiperSlide className="flex items-center justify-center">
-          <img src={sliderImg3} className="w-[80%]" alt="" />
+          <img src={sliderImg3} className="w-[80%] xl:w-[70%]" alt="" />
         </SwiperSlide>
         <SwiperSlide className="flex items-center justify-center">
-          <img src={sliderImg2} className="w-[60%]" alt="" />
+          <img src={sliderImg2} className="w-[60%] xl:w-[40%]" alt="" />
         </SwiperSlide>
       </Swiper>
 
