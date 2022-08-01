@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import ExplainationCard from "./ExplainationCard";
 
-function ExplainationSlider() {
+function ExplainationSlider({ setSwiperActiveSlide }) {
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
 
@@ -19,13 +19,13 @@ function ExplainationSlider() {
       <Swiper
         slidesPerView={1}
         spaceBetween={0}
-        loop={true}
         modules={[Navigation]}
         navigation={{
           prevEl: navigationPrevRef.current,
           nextEl: navigationNextRef.current,
         }}
         onSwiper={(swiper) => {
+          setSwiperActiveSlide(swiper.activeIndex);
           setTimeout(() => {
             swiper.params.navigation.prevEl = navigationPrevRef.current;
             swiper.params.navigation.nextEl = navigationNextRef.current;
@@ -35,6 +35,10 @@ function ExplainationSlider() {
             swiper.navigation.init();
             swiper.navigation.update();
           });
+        }}
+        onSlideChange={(swiper) => {
+          console.log(swiper.activeIndex);
+          setSwiperActiveSlide(swiper.activeIndex);
         }}
       >
         <SwiperSlide>

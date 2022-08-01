@@ -2,12 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    fontFamily: {
-      lunchBox: "lunchBox",
-      "north-font": "north-font",
-    },
-
     extend: {
+      fontFamily: {
+        lunchBox: "lunchBox",
+        "north-font": "north-font",
+      },
       colors: {
         yellow: "#FFC100",
         pink: "#FB51B9",

@@ -28,7 +28,7 @@ function Hero() {
             alt=""
           />
 
-          <h1 className="font-lunchBox text-[2.4rem] text-white italic font-[700] text-center pink-border-text mt-[-2rem] md:text-[5.4vw] lg:text-[4vw] lg:mt-[-4vw]">
+          <h1 className="font-lunchBox text-[2.4rem] text-white font-[700] text-center pink-border-text mt-[-2rem] md:text-[5.4vw] lg:text-[4vw] lg:mt-[-4vw]">
             SEND LOVE IN A PACKAGE!
           </h1>
 

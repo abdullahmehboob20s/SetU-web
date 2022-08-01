@@ -159,10 +159,7 @@ function LetsStartChoosing() {
           ]}
         />
 
-        <div
-          className="flex flex-col items-center mt-[2rem] space-y-2"
-          id="buy"
-        >
+        <div className="flex flex-col items-center mt-[2rem] space-y-2">
           <button className="text-[2rem] font-bold text-white bg-green py-[.2rem] px-[2.2rem] rounded-[.6rem] ">
             CLICK TO PAY
           </button>

@@ -13,7 +13,7 @@ function App() {
       <div className="mb-[100px]" id="explaination">
         <About />
       </div>
-      <div className="mb-[100px] xl:mb-[200px]">
+      <div className="mb-[100px] xl:mb-[200px]" id="buy">
         <Explain />
       </div>
       <div className="mb-[100px]">

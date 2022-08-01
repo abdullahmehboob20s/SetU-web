@@ -1,11 +1,13 @@
 import React from "react";
 
-function ExplainationCard({ title, subtitle, index, borderBottom = false }) {
+function ExplainationCard(props) {
+  const { title, subtitle, index, borderBottom = false } = props;
   return (
     <div
       className={`${
         borderBottom ? "lg:border-b-[.2vw] lg:border-blue lg:pb-[1.2vw]" : ""
       }`}
+      {...props.events}
     >
       <p className="text-blue text-[1rem] leading-[1] font-bold lg:text-[1.4vw] lg:mb-[.8vw]">
         {index}

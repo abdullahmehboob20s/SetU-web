@@ -3,7 +3,7 @@ import familyImg from "assets/images/family.jpeg";
 
 function About() {
   return (
-    <div className="lg:flex lg:items-center lg:flex-row-reverse">
+    <div className="lg:flex lg:items-center lg:flex-row-reverse border-t-[1rem] border-[rgba(112,112,112,0.08)] pt-24">
       <div className="px-[2rem] xl:px-[4rem] xl:pr-[4.2rem]">
         <p className="text-blue text-[1.2rem] uppercase mb-2 xl:text-[1.6rem]">
           About

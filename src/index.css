@@ -40,11 +40,11 @@
   }
 
   .pink-border-text {
-    -webkit-text-stroke: 1px #e343a5;
+    -webkit-text-stroke: 0.04em #e343a5;
   }
 
   .blue-border-text {
-    -webkit-text-stroke: 1px #0388d4;
+    -webkit-text-stroke: 0.04em #0388d4;
   }
 }
 
