@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import heroBg from "assets/images/hero-bg.png";
 import set4you from "assets/images/set4you.png";
 import set4U from "assets/images/set4U.png";
@@ -10,8 +10,22 @@ import { Link as ScrollLink } from "react-scroll";
 import Slider from "./Slider";
 
 function Hero() {
+  const appHeight = () => {
+    const doc = document.documentElement;
+    doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", appHeight);
+    appHeight();
+
+    return () => {
+      window.removeEventListener("resize", null);
+    };
+  });
+
   return (
-    <div className="flex flex-col min-h-screen ">
+    <div className="flex flex-col min-h-[var(--app-height)]">
       <div className="relative flex flex-1 flex-col md:flex-row md:items-center md:px-[4vw] md:space-x-[2vw]">
         <img
           src={heroBg}
