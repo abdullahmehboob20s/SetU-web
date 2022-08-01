@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import letsStartChoosingTitle from "assets/images/lets-start-choosing.png";
 import ProductCard from "components/ProductCard";
 import shirt from "assets/images/shirt-man.png";
@@ -17,7 +17,12 @@ import socks1 from "assets/images/socks-1.png";
 import socks2 from "assets/images/socks-2.png";
 import socks3 from "assets/images/socks-3.png";
 
+import necktie from "assets/images/necktie.png";
+import papillontie from "assets/images/papillontie.png";
+
 function LetsStartChoosing() {
+  const [isAbleToPay, setIsAbleToPay] = useState(false);
+
   return (
     <div>
       <img
@@ -83,8 +88,13 @@ function LetsStartChoosing() {
           HAS A SUBTLE SHINE THAT GIVES PRESENCE AND PLEASANTNESS.
           EASY TO USE, ADJUSTABLE STRAP FOR ANY NECK AND EASY CLOSURE."
           productTypes={[
-            { id: "1", title: "NECKTIE", isSelected: false },
-            { id: "2", title: "PAPILLON", isSelected: false },
+            { id: "1", title: "NECKTIE", iconImg: necktie, isSelected: false },
+            {
+              id: "2",
+              title: "PAPILLON",
+              iconImg: papillontie,
+              isSelected: false,
+            },
           ]}
           sizeChart={false}
           colors={{
@@ -169,10 +179,25 @@ function LetsStartChoosing() {
         />
 
         <div className="flex flex-col items-center mt-[2rem] space-y-2">
-          <button className="text-[2rem] font-bold text-white bg-green py-[.2rem] px-[2.2rem] rounded-[.6rem] ">
+          <button
+            onClick={() => setIsAbleToPay((val) => !val)}
+            className={`text-[2rem] font-bold  py-[.2rem] px-[2.2rem] rounded-[.6rem] ${
+              isAbleToPay
+                ? "text-white bg-green border-2 border-transparent"
+                : "text-black bg-transparent border-2 border-black"
+            }`}
+          >
             CLICK TO PAY
           </button>
-          <p className="text-[2rem]">(500₪)</p>
+          <p
+            className={`text-[2rem] ${
+              isAbleToPay
+                ? "opacity-[1] pointer-events-auto"
+                : "opacity-0 pointer-events-none"
+            }`}
+          >
+            (500₪)
+          </p>
         </div>
       </div>
     </div>

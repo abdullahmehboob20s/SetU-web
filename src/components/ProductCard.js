@@ -23,6 +23,8 @@ function ProductCard(props) {
     images,
   } = state;
 
+  console.log(state);
+
   return (
     <div className="md:flex md:flex-row-reverse">
       <div className="md:flex-1 md:flex md:flex-col md:justify-between">
@@ -38,13 +40,13 @@ function ProductCard(props) {
             ""
           )}
 
-          <div className="flex items-center space-x-2 flex-wrap mb-4">
+          <div className="flex items-center m-[-.3rem] flex-wrap mb-4">
             {productTypes &&
               productTypes.map((item, index) => (
                 <>
                   <button
                     key={index}
-                    className={`border-2 border-black rounded-[.4rem] px-[.4rem] py-[.1rem] font-bold text-[.9rem] uppercase xl:text-[1.4rem]  ${
+                    className={`border-2 m-[.3rem] border-black rounded-[.4rem] px-[.4rem] py-[.1rem] font-bold text-[1.1rem] uppercase xl:text-[1.4rem] flex items-center ${
                       item.isSelected
                         ? "bg-[#5D5D5D] text-white"
                         : "bg-white text-black"
@@ -60,11 +62,11 @@ function ProductCard(props) {
                       })
                     }
                   >
-                    {item.title}
+                    <span>{item.title}</span>
                   </button>
 
                   {index === productTypes.length - 1 ? null : (
-                    <span className="text-[1rem] font-bold uppercase xl:text-[1.2rem]">
+                    <span className="text-[1rem] font-bold uppercase xl:text-[1.2rem] m-[.3rem]">
                       OR
                     </span>
                   )}
@@ -72,7 +74,7 @@ function ProductCard(props) {
               ))}
 
             {sizeChart || sizeChart.value ? (
-              <button className="border-b-2 border-blue text-[.8rem] text-black uppercase xl:text-[1.1rem]">
+              <button className="border-b-2 border-blue text-[.8rem] text-black uppercase xl:text-[1.1rem] m-[.3rem]">
                 {sizeChart.title ? sizeChart.title : "Size Chart"}
               </button>
             ) : (
@@ -90,7 +92,26 @@ function ProductCard(props) {
                 {colors.values.map((item, index) => (
                   <>
                     {item.value === "rainbow" ? (
-                      <div className="relative py-[.04rem] px-[.6rem] border-2 rounded-[.4rem] cursor-pointer overflow-hidden">
+                      <div
+                        className={`relative py-[.04rem] px-[.6rem]  rounded-[.4rem] cursor-pointer overflow-hidden ${
+                          item.isSelected
+                            ? "border-2 border-black"
+                            : "border-2 border-white"
+                        }`}
+                        onClick={() => {
+                          setState({
+                            ...state,
+                            colors: {
+                              ...state.colors,
+                              values: state.colors.values.map((elem) =>
+                                elem.id === item.id
+                                  ? { ...elem, isSelected: true }
+                                  : { ...elem, isSelected: false }
+                              ),
+                            },
+                          });
+                        }}
+                      >
                         <p className="font-bold text-black uppercase text-[1rem] z-[2] xl:text-[1.4rem]">
                           Rainbow
                         </p>
@@ -101,7 +122,23 @@ function ProductCard(props) {
                         />
                       </div>
                     ) : (
-                      <ColorCard color={item.value} />
+                      <ColorCard
+                        color={item.value}
+                        isSelected={item.isSelected}
+                        onClick={() => {
+                          setState({
+                            ...state,
+                            colors: {
+                              ...state.colors,
+                              values: state.colors.values.map((elem) =>
+                                elem.id === item.id
+                                  ? { ...elem, isSelected: true }
+                                  : { ...elem, isSelected: false }
+                              ),
+                            },
+                          });
+                        }}
+                      />
                     )}
 
                     {colors.isORDivision &&
