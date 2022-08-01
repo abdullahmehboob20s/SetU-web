@@ -37,7 +37,6 @@ function ExplainationSlider({ setSwiperActiveSlide }) {
           });
         }}
         onSlideChange={(swiper) => {
-          console.log(swiper.activeIndex);
           setSwiperActiveSlide(swiper.activeIndex);
         }}
       >

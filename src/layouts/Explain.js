@@ -11,8 +11,6 @@ function Explain() {
   const [swiperActiveSlide, setSwiperActiveSlide] = useState("asdasd");
   const [cardIndex, setCardIndex] = useState(1);
 
-  console.log(swiperActiveSlide);
-
   return (
     <div className="relative">
       <div

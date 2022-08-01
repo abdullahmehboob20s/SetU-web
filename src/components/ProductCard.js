@@ -9,17 +9,19 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-function ProductCard({
-  productName,
-  productSpeciality,
-  description,
-  productTypes,
-  sizeChart,
-  colors,
-  sizes,
-  images,
-}) {
-  const [selectedImg, setSelectedImg] = useState(images[0].img);
+function ProductCard(props) {
+  const [state, setState] = useState(props);
+  const [selectedImg, setSelectedImg] = useState(props.images[0].img);
+  const {
+    productName,
+    productSpeciality,
+    description,
+    productTypes,
+    sizeChart,
+    colors,
+    sizes,
+    images,
+  } = state;
 
   return (
     <div className="md:flex md:flex-row-reverse">
@@ -42,7 +44,21 @@ function ProductCard({
                 <>
                   <button
                     key={index}
-                    className="border-2 rounded-[.4rem] px-[.4rem] py-[.1rem] font-bold text-[.9rem] text-black uppercase xl:text-[1.4rem]"
+                    className={`border-2 border-black rounded-[.4rem] px-[.4rem] py-[.1rem] font-bold text-[.9rem] uppercase xl:text-[1.4rem]  ${
+                      item.isSelected
+                        ? "bg-[#5D5D5D] text-white"
+                        : "bg-white text-black"
+                    }`}
+                    onClick={() =>
+                      setState({
+                        ...state,
+                        productTypes: state.productTypes.map((e) =>
+                          e.id === item.id
+                            ? { ...e, isSelected: true }
+                            : { ...e, isSelected: false }
+                        ),
+                      })
+                    }
                   >
                     {item.title}
                   </button>
@@ -108,17 +124,52 @@ function ProductCard({
 
               <div className="relative w-fit">
                 <select
-                  id="cars"
-                  className="text-[1.4rem] text-black font-bold border-2 rounded-[.4rem] block min-w-[4.6rem] px-[.4rem] py-[.1rem] relative hide-select-dropdown-icon xl:text-[1.6rem]"
+                  className={`text-[1.4rem] font-bold border-2 border-black rounded-[.4rem] block min-w-[6rem] px-[.4rem] py-[.1rem] relative hide-select-dropdown-icon xl:text-[1.6rem] ${
+                    state.sizes.selectedSize === ""
+                      ? "text-black "
+                      : "bg-[#5D5D5D] text-white"
+                  }`}
+                  onChange={(e) =>
+                    setState({
+                      ...state,
+                      sizes: {
+                        ...sizes,
+                        selectedSize: e.target.value ? e.target.value : "",
+                        diffrentSizes: state.sizes.diffrentSizes.map((item) =>
+                          e.target.value === item.value
+                            ? { ...item, isSelected: true }
+                            : { ...item, isSelected: false }
+                        ),
+                      },
+                    })
+                  }
                 >
-                  {sizes.map((item, index) => (
-                    <option key={index} value="volvo">
+                  {sizes.selectedSize === "" ? (
+                    <option value="">XS-3XL</option>
+                  ) : null}
+                  {sizes.diffrentSizes.map((item, index) => (
+                    <option
+                      key={index}
+                      value={item.value}
+                      selected={item.isSelected ? true : false}
+                      className={`${
+                        item.isSelected
+                          ? "bg-[#5D5D5D] text-white"
+                          : "text-black  bg-white"
+                      }`}
+                    >
                       {item.value}
                     </option>
                   ))}
                 </select>
 
-                <span className="block absolute top-[50%] right-[.2rem] pointer-events-none translate-y-[-50%] text-[1.5rem]">
+                <span
+                  className={`block absolute top-[50%] right-[.2rem] pointer-events-none translate-y-[-50%] text-[1.5rem] ${
+                    state.sizes.selectedSize === ""
+                      ? "text-black"
+                      : "text-white"
+                  }`}
+                >
                   <BiChevronDown />
                 </span>
               </div>

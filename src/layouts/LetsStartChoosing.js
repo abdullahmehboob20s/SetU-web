@@ -32,8 +32,8 @@ function LetsStartChoosing() {
           productSpeciality="CUT AND FABRIC COMPOSITION-"
           description="ELEGANT BUTTON-UP SHIRT, STANDARD COLLAR MODEL, BUTTONS EXPOSED SATIN FABRIC. ELEGANT BUTTON-DOWN SHIRT WITH REGULAR COLLAR EXPOSED BUTTONS IN A VARIETY OF COLORS"
           productTypes={[
-            { title: "Super Slim 97/3" },
-            { title: "Square 80/20" },
+            { id: "1", title: "Super Slim 97/3", isSelected: false },
+            { id: "2", title: "Square 80/20", isSelected: false },
           ]}
           sizeChart={{
             value: true,
@@ -42,18 +42,24 @@ function LetsStartChoosing() {
           colors={{
             isORDivision: false,
             values: [
-              { value: "#51B8FA" },
-              { value: "#D451FA" },
-              { value: "black" },
-              { value: "white" },
+              { id: "1", value: "#51B8FA", isSelected: false },
+              { id: "2", value: "#D451FA", isSelected: false },
+              { id: "3", value: "black", isSelected: false },
+              { id: "4", value: "white", isSelected: false },
             ],
           }}
-          sizes={[
-            { value: "XS" },
-            { value: "SM" },
-            { value: "MD" },
-            { value: "XL" },
-          ]}
+          sizes={{
+            selectedSize: "",
+            diffrentSizes: [
+              { id: "1", value: "XS", isSelected: false },
+              { id: "2", value: "S", isSelected: false },
+              { id: "3", value: "M", isSelected: false },
+              { id: "4", value: "L", isSelected: false },
+              { id: "5", value: "XL", isSelected: false },
+              { id: "6", value: "XXL", isSelected: false },
+              { id: "7", value: "3XL", isSelected: false },
+            ],
+          }}
           images={[
             {
               img: shirt,
@@ -76,15 +82,18 @@ function LetsStartChoosing() {
           description="BLACK BOW TIE, SOLID COLOR.
           HAS A SUBTLE SHINE THAT GIVES PRESENCE AND PLEASANTNESS.
           EASY TO USE, ADJUSTABLE STRAP FOR ANY NECK AND EASY CLOSURE."
-          productTypes={[{ title: "NECKTIE" }, { title: "PAPILLON" }]}
+          productTypes={[
+            { id: "1", title: "NECKTIE", isSelected: false },
+            { id: "2", title: "PAPILLON", isSelected: false },
+          ]}
           sizeChart={false}
           colors={{
             isORDivision: false,
             values: [
-              { value: "#CCCCCC" },
-              { value: "#0018FF" },
-              { value: "black" },
-              { value: "#E82B34" },
+              { id: "1", value: "#CCCCCC", isSelected: false },
+              { id: "2", value: "#0018FF", isSelected: false },
+              { id: "3", value: "black", isSelected: false },
+              { id: "4", value: "#E82B34", isSelected: false },
             ],
           }}
           images={[
@@ -110,10 +119,10 @@ function LetsStartChoosing() {
           THIS IS AN ITEM THAT WILL LUXURIOUSLY UPGRADE
           ANY PAIR OF PANTS FOR DAYTIME AND EVENING HOURS."
           productTypes={[
-            { title: "CLASSIC" },
-            { title: "CLUTCH" },
-            { title: "CLASP" },
-            { title: "ELEGANT" },
+            { id: "1", title: "CLASSIC", isSelected: false },
+            { id: "2", title: "CLUTCH", isSelected: false },
+            { id: "3", title: "CLASP", isSelected: false },
+            { id: "4", title: "ELEGANT", isSelected: false },
           ]}
           sizeChart={false}
           images={[
@@ -141,9 +150,9 @@ function LetsStartChoosing() {
           colors={{
             isORDivision: true,
             values: [
-              { value: "rainbow" },
-              { value: "black" },
-              { value: "white" },
+              { id: "1", value: "rainbow", isSelected: false },
+              { id: "2", value: "black", isSelected: false },
+              { id: "3", value: "white", isSelected: false },
             ],
           }}
           images={[
