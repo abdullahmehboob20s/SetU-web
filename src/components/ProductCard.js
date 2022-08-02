@@ -8,10 +8,16 @@ import rainbowBg from "assets/images/rainbowBg.png";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { useDispatch } from "react-redux";
+import {
+  productColorSelector,
+  productSizeSelector,
+  productTypeSelector,
+} from "reduxSTATES/slices/productsSlice";
 
 function ProductCard(props) {
-  const [state, setState] = useState(props);
   const [selectedImg, setSelectedImg] = useState(props.images[0].img);
+  const dispatch = useDispatch();
   const {
     productName,
     productSpeciality,
@@ -21,9 +27,8 @@ function ProductCard(props) {
     colors,
     sizes,
     images,
-  } = state;
-
-  console.log(state);
+    id,
+  } = props;
 
   return (
     <div className="md:flex md:flex-row-reverse">
@@ -51,16 +56,15 @@ function ProductCard(props) {
                         ? "bg-[#5D5D5D] text-white"
                         : "bg-white text-black"
                     }`}
-                    onClick={() =>
-                      setState({
-                        ...state,
-                        productTypes: state.productTypes.map((e) =>
-                          e.id === item.id
-                            ? { ...e, isSelected: true }
-                            : { ...e, isSelected: false }
-                        ),
-                      })
-                    }
+                    onClick={() => {
+                      dispatch(
+                        productTypeSelector({
+                          id,
+                          prductTypeId: item.id,
+                          productTypeValue: item.title,
+                        })
+                      );
+                    }}
                   >
                     <span>{item.title}</span>
                   </button>
@@ -99,17 +103,13 @@ function ProductCard(props) {
                             : "border-2 border-white"
                         }`}
                         onClick={() => {
-                          setState({
-                            ...state,
-                            colors: {
-                              ...state.colors,
-                              values: state.colors.values.map((elem) =>
-                                elem.id === item.id
-                                  ? { ...elem, isSelected: true }
-                                  : { ...elem, isSelected: false }
-                              ),
-                            },
-                          });
+                          dispatch(
+                            productColorSelector({
+                              id,
+                              colorId: item.id,
+                              productColor: "rainbow",
+                            })
+                          );
                         }}
                       >
                         <p className="font-bold text-black uppercase text-[1rem] z-[2] xl:text-[1.4rem]">
@@ -126,17 +126,13 @@ function ProductCard(props) {
                         color={item.value}
                         isSelected={item.isSelected}
                         onClick={() => {
-                          setState({
-                            ...state,
-                            colors: {
-                              ...state.colors,
-                              values: state.colors.values.map((elem) =>
-                                elem.id === item.id
-                                  ? { ...elem, isSelected: true }
-                                  : { ...elem, isSelected: false }
-                              ),
-                            },
-                          });
+                          dispatch(
+                            productColorSelector({
+                              id,
+                              colorId: item.id,
+                              productColor: item.value,
+                            })
+                          );
                         }}
                       />
                     )}
@@ -161,24 +157,18 @@ function ProductCard(props) {
 
               <div className="relative w-fit">
                 <select
-                  className={`text-[1.4rem] font-bold border-2 border-black rounded-[.4rem] block min-w-[6rem] px-[.4rem] py-[.1rem] relative hide-select-dropdown-icon xl:text-[1.6rem] ${
-                    state.sizes.selectedSize === ""
+                  className={`text-[1.4rem] cursor-pointer font-bold border-2 border-black rounded-[.4rem] block min-w-[6rem] px-[.4rem] py-[.1rem] relative hide-select-dropdown-icon xl:text-[1.6rem] ${
+                    props.sizes.selectedSize === ""
                       ? "text-black "
                       : "bg-[#5D5D5D] text-white"
                   }`}
                   onChange={(e) =>
-                    setState({
-                      ...state,
-                      sizes: {
-                        ...sizes,
-                        selectedSize: e.target.value ? e.target.value : "",
-                        diffrentSizes: state.sizes.diffrentSizes.map((item) =>
-                          e.target.value === item.value
-                            ? { ...item, isSelected: true }
-                            : { ...item, isSelected: false }
-                        ),
-                      },
-                    })
+                    dispatch(
+                      productSizeSelector({
+                        id,
+                        optionValue: sizes ? e.target.value : "not-available",
+                      })
+                    )
                   }
                 >
                   {sizes.selectedSize === "" ? (
@@ -189,7 +179,7 @@ function ProductCard(props) {
                       key={index}
                       value={item.value}
                       selected={item.isSelected ? true : false}
-                      className={`${
+                      className={`cursor-pointer ${
                         item.isSelected
                           ? "bg-[#5D5D5D] text-white"
                           : "text-black  bg-white"
@@ -202,7 +192,7 @@ function ProductCard(props) {
 
                 <span
                   className={`block absolute top-[50%] right-[.2rem] pointer-events-none translate-y-[-50%] text-[1.5rem] ${
-                    state.sizes.selectedSize === ""
+                    props.sizes.selectedSize === ""
                       ? "text-black"
                       : "text-white"
                   }`}
