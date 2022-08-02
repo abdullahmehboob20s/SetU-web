@@ -51,7 +51,7 @@ function ProductCard(props) {
                 <>
                   <button
                     key={index}
-                    className={`border-2 m-[.3rem] border-black rounded-[.4rem] px-[.4rem] py-[.1rem] font-bold text-[1.1rem] uppercase xl:text-[1.4rem] flex items-center ${
+                    className={`border-2 m-[.3rem] border-black rounded-[.4rem] px-[.4rem] py-[.1rem] font-bold text-[1.1rem] uppercase xl:text-[1.4rem] flex items-center space-x-2 ${
                       item.isSelected
                         ? "bg-[#5D5D5D] text-white"
                         : "bg-white text-black"
@@ -67,6 +67,18 @@ function ProductCard(props) {
                     }}
                   >
                     <span>{item.title}</span>
+
+                    {item.iconImg ? (
+                      <img
+                        src={item.iconImg}
+                        className={`${
+                          item.title === "PAPILLON"
+                            ? "w-[2.5rem] sm:w-[3rem]"
+                            : "w-[4rem] sm:w-[5rem]"
+                        } ${item.isSelected ? "invert-[1]" : "invert-0"}`}
+                        alt=""
+                      />
+                    ) : null}
                   </button>
 
                   {index === productTypes.length - 1 ? null : (

@@ -40,7 +40,7 @@ function LetsStartChoosing() {
 
         <div className="flex flex-col items-center mt-[2rem] space-y-2">
           <button
-            onClick={() => setIsAbleToPay((val) => !val)}
+            disabled={isAbleToPay ? true : false}
             className={`text-[2rem] font-bold  py-[.2rem] px-[2.2rem] rounded-[.6rem] ${
               isAbleToPay
                 ? "text-white bg-green border-2 border-transparent"
