@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import heroBg from "assets/images/hero-bg.png";
 import set4you from "assets/images/set4you.png";
 import set4U from "assets/images/set4U.png";
@@ -10,22 +10,22 @@ import { Link as ScrollLink } from "react-scroll";
 import Slider from "./Slider";
 
 function Hero() {
-  const appHeight = () => {
-    const doc = document.documentElement;
-    doc.style.setProperty("--app-height", `${window.innerHeight}px`);
-  };
+  const wrapperRef = useRef(null);
 
   useEffect(() => {
-    window.addEventListener("resize", appHeight);
-    appHeight();
+    const handler = () => {
+      wrapperRef.current.style.minHeight = window?.innerHeight + "px";
+    };
+
+    window.addEventListener("resize", handler);
 
     return () => {
-      window.removeEventListener("resize", null);
+      window.removeEventListener("resize", handler);
     };
   });
 
   return (
-    <div className="flex flex-col h-[100vh]">
+    <div className="flex flex-col min-h-[100vh]" ref={wrapperRef}>
       <div className="relative flex flex-1 flex-col md:flex-row md:items-center md:px-[4vw] md:space-x-[2vw]">
         <img
           src={heroBg}
