@@ -25,8 +25,7 @@ function Hero() {
   });
 
   return (
-    <div className="flex flex-col h-[var(--app-height)]">
-      {/* ;lasd;laskd;l */}
+    <div className="flex flex-col h-[100vh]">
       <div className="relative flex flex-1 flex-col md:flex-row md:items-center md:px-[4vw] md:space-x-[2vw]">
         <img
           src={heroBg}
