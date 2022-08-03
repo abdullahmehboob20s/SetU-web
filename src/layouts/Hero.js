@@ -24,7 +24,7 @@ function Hero() {
     return () => {
       window.removeEventListener("resize", handler);
     };
-  });
+  }, []);
 
   return (
     <div className="flex flex-col min-h-[100vh]" ref={wrapperRef}>
