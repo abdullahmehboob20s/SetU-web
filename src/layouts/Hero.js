@@ -13,6 +13,8 @@ function Hero() {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
+    wrapperRef.current.style.minHeight = window?.innerHeight + "px";
+
     const handler = () => {
       wrapperRef.current.style.minHeight = window?.innerHeight + "px";
     };
