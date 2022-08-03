@@ -8,13 +8,19 @@ import gift from "assets/images/gift.png";
 import dontknow from "assets/images/dontknow.png";
 import { Link as ScrollLink } from "react-scroll";
 import Slider from "./Slider";
+import useMediaQuery from "hooks/useMediaQuery";
 
 function Hero() {
   const wrapperRef = useRef(null);
+  const isBellow768px = useMediaQuery("(max-width : 768px)");
 
   useEffect(() => {
-    wrapperRef.current.style.minHeight = window?.innerHeight + "px";
-  }, []);
+    if (isBellow768px) {
+      wrapperRef.current.style.minHeight = window?.innerHeight + "px";
+    } else {
+      wrapperRef.current.style.minHeight = "100vh";
+    }
+  }, [isBellow768px]);
 
   return (
     <div className="flex flex-col min-h-[100vh]" ref={wrapperRef}>
